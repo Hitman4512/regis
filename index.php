@@ -1,14 +1,12 @@
 <?php
 // Initialize variables for submitted data
-$name = $email = $phone = $dob = $gender = "";
+$name = $email = $password = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data when the form is submitted
     $name = htmlspecialchars($_POST['name']);
     $email = htmlspecialchars($_POST['email']);
-    $phone = htmlspecialchars($_POST['phone']);
-    $dob = htmlspecialchars($_POST['dob']);
-    $gender = htmlspecialchars($_POST['gender']);
+    $password = htmlspecialchars($_POST['password']);
 }
 ?>
 
@@ -46,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-weight: 600;
             color: #555;
         }
-        input, select {
+        input {
             width: 100%;
             padding: 12px;
             margin-bottom: 15px;
@@ -56,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #fdfdfd;
             transition: border-color 0.3s;
         }
-        input:focus, select:focus {
+        input:focus {
             border-color: #007bff;
             outline: none;
         }
@@ -96,19 +94,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <label for="email">Email Address:</label>
             <input type="email" id="email" name="email" value="<?php echo $email; ?>" placeholder="Enter your email" required>
 
-            <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" name="phone" value="<?php echo $phone; ?>" placeholder="Enter your phone number" required>
-
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" value="<?php echo $dob; ?>" required>
-
-            <label for="gender">Gender:</label>
-            <select id="gender" name="gender" required>
-                <option value="" disabled>Select your gender</option>
-                <option value="Male" <?php if($gender == "Male") echo "selected"; ?>>Male</option>
-                <option value="Female" <?php if($gender == "Female") echo "selected"; ?>>Female</option>
-                <option value="Other" <?php if($gender == "Other") echo "selected"; ?>>Other</option>
-            </select>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" value="<?php echo $password; ?>" placeholder="Enter your password" required>
 
             <button type="submit">Submit</button>
         </form>
@@ -119,9 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h3>Submitted Details:</h3>
                 <p><strong>Full Name:</strong> <?php echo $name; ?></p>
                 <p><strong>Email:</strong> <?php echo $email; ?></p>
-                <p><strong>Phone:</strong> <?php echo $phone; ?></p>
-                <p><strong>Date of Birth:</strong> <?php echo $dob; ?></p>
-                <p><strong>Gender:</strong> <?php echo $gender; ?></p>
+                <p><strong>Password:</strong> <?php echo $password; ?></p>
             </div>
             <script>
                 setTimeout(function() {
